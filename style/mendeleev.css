@@ -1,0 +1,83 @@
+.tableMendeleev,td{
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+.tableMendeleev{
+    margin: 0 auto;
+}
+td{
+    width: 100px;
+    height: 60px;
+}
+.yellow{
+    background-color: #fff419;
+}
+.red{
+    background-color: #de909d;
+}
+.blue{
+    background-color: #0ac1ff;
+}
+.up{
+    height: 40px;
+    text-align: right;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    border-spacing: 0px;
+}
+.down{
+   height:  20px;
+}
+.up>div{
+    width: 50%;
+    margin: 0px;
+    padding: 0px;
+}
+.left{
+    vertical-align: top;
+    float: left;
+    text-align: left;
+}
+.right{
+    vertical-align: top;
+    text-align: right;
+    float: right;
+}
+.znak{
+    font-weight: bold;
+    font-size: 25px;
+}
+.number,.down{
+    font-weight: bold;
+    font-size: 17px;
+}
+.massa{
+    font-size: 12px;
+}
+a{
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    color: #000;
+}
+.tableMendeleev a:hover{
+    background-image: url("https://ru.wikipedia.org/static/images/project-logos/ruwiki.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 1s ease;
+}
+.tableMendeleev a>div:hover{
+    opacity: 0;
+    transition: all 1s ease;
+}
+.rightElement{
+    float: right;
+    text-align: right;
+}
+.leftElement{
+    float: left;
+    text-align: left;
+}
