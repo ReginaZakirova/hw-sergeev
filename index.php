@@ -1,9 +1,27 @@
 <?php
     include('header.php');
 
-    $date1 = strtotime(date('d-m-Y'));
-    $date2 = strtotime("29-06-1993");
-    $days = floor(($date1 - $date2) / (60 * 60 * 24));
+
+    function daysAll(){
+        $date1 = strtotime(date('d-m-Y'));
+        $date2 = strtotime("29-06-1993");
+        return $days = floor(($date1 - $date2) / (60 * 60 * 24));
+    }
+    function perekras($stroka){
+        $arr = explode(' ',$stroka);
+        $i=0;
+        foreach ($arr as $value){
+            if($i%2==0){
+                $str = $str."<span class='green'>".$arr[$i]."</span> ";
+            }else{
+                $str = $str."<span class='red'>".$arr[$i]."</span> ";
+            }
+            $i++;
+        }
+        return $str;
+    }
+
+
 ?>
             <div class="foto_bar ">
                     <div class="foto">
@@ -16,7 +34,7 @@
                                 <div class="date_now">
                                     Текущая дата: <?=date('d-m-Y')?>
                                     День рождения: 29-06-1993<br>
-                                    Жив дней: <?=$days?>
+                                    Жив дней: <?=daysAll()?>
                                 </div>
                             <div class="line"></div>
                         </div>
@@ -37,17 +55,7 @@
                                 <h4>Про занятия:</h4>
                             <?php
                             $stroka = 'Занятия отличные, для новичков не плохой старт. И очень жаль что отстуствует обучение по Bootstrap, JQuery, JS, хотя бы элементарное обучение AJAX, но понимаю что в такой короткий срок изучить их не получится.';
-                            $arr = explode(' ',$stroka);
-                            $i=0;
-                            foreach ($arr as $value){
-                                if($i%2==0){
-                                    $str = $str."<span class='green'>".$arr[$i]."</span> ";
-                                }else{
-                                    $str = $str."<span class='red'>".$arr[$i]."</span> ";
-                                }
-                                $i++;
-                            }
-                            echo $str;
+                            echo perekras($stroka);
                             ?>
                                 </div>
                 <div class="line"></div>
