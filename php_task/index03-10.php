@@ -11,9 +11,9 @@ echo big(10,15);
 
 echo "<br><br>Слайд 13, Задание 2".'<br>';
 function gipotenuza($a,$b){
-    echo "гипотенуза = ".$c = sqrt(pow($a,2)+pow($b,2)).'<br>';;
+    return "гипотенуза = ".$c = sqrt(pow($a,2)+pow($b,2)).'<br>';;
 }
-gipotenuza(10,6);
+echo gipotenuza(10,6);
 
 echo "<br><br>Слайд 13, Задание 3".'<br>';
 function x10($x = 10){
@@ -51,9 +51,9 @@ echo "<br><br>Слайд 14, Задание 6".'<br>';
 
 function countWord($stroka){
     $countWord = count(explode(" ",$stroka));
-    echo "Количество слов в строке - $stroka = ".$countWord;
+    return "Количество слов в строке - $stroka = ".$countWord;
 }
-countWord("Тестовая строка для проверки функции подсчета слов в строке");
+echo countWord("Тестовая строка для проверки функции подсчета слов в строке");
 
 echo "<br><br>Слайд 14, Задание 7".'<br>';
 function fibo($n){
@@ -68,6 +68,15 @@ function fibo($n){
     return $fn;
 }
 echo fibo(17);
+
+echo "<br><br>Слайд 14, Задание 7".'<br>';
+function fiboRekurs($n, $f1=0, $f2=1){
+    if ($n < 3) return $f2;
+    $fn = $f2+$f1;
+    return fiboRekurs($n-1,$f2,$fn);
+}
+
+echo fiboRekurs(17);
 
 echo "<br><br>Слайд 15, Задание 1".'<br>';
 function randNum($array){
@@ -84,7 +93,7 @@ echo "<br><br>Слайд 15, Задание 2".'<br>';
 function countWords($stroka){
     return count(explode(', ',$stroka));
 }
-echo countWord('HTML, CSS, PHP, BITRIX');
+echo countWords('HTML, CSS, PHP, BITRIX');
 
 
 echo "<br><br>Слайд 15, Задание 3".'<br>';
@@ -110,7 +119,4 @@ function brWords($stroka){
     }
 }
 brWords('HTML, CSS, PHP, BITRIX');
-
-$str = htmlentities(file_get_contents("../index.php"));
-echo $str;
 ?>
