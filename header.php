@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +15,7 @@
     <?php include "include/main.php"?>
     <title>Домашнее задание</title>
 </head>
-<body>
+<body style="background-color: <?=select_color($_SESSION["ID_COLOR"])?> !important">
 <div class="container">
     <div class="header">
         <div class="menu">
@@ -47,11 +50,17 @@
                 <span><a target="_blank" href="https://fact.digital/">ФАКТ</a></span>
             </div>
             <div class="punkt_menu" id="login">
-                <span>Войти</span>
+                <?php
+                    if($_SESSION["USER_LOGIN"]){
+                        echo '<span>'.$_SESSION["USER_LOGIN"].'</span>';
+                    }else{
+                        echo '<span>Войти</span>';
+                    }?>
+
             </div>
             <div class="popup" style="<?if(password()==1) echo 'display: block'; else echo 'display: none';?>">
                 <div class="popup_container">
-                    <?php if(password()!=1){ ?>
+                    <?php if(!isset($_SESSION["USER_LOGIN"])){ ?>
                     <form method="POST">
                         <input type="hidden" name="FORM_LOGIN" value="load">
                         <h3>Войти(admin/admin)</h3>
@@ -66,9 +75,9 @@
                     <?php if(password()==3){?>
                         <div>Заполните пустые поля</div>
                     <?php } ?>
-
-                   <?php if(password()==1){?>
-                        <div>Привет, <?=$_POST['name']?></div>
+                   <?php if($_SESSION["USER_LOGIN"]){?>
+                       <div>Привет, <?=$_SESSION["USER_LOGIN"]?></div>
+                       <div><a href="include/main.php?destroy=1">Выйти</a></div>
                     <?php } ?>
                 </div>
                 <div class="popup_vid"></div>

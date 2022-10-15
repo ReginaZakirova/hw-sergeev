@@ -2,26 +2,6 @@
     include('header.php');
 
 
-    function daysAll(){
-        $date1 = strtotime(date('d-m-Y'));
-        $date2 = strtotime("29-06-1993");
-        return $days = floor(($date1 - $date2) / (60 * 60 * 24));
-    }
-    function perekras($stroka){
-        $arr = explode(' ',$stroka);
-        $i=0;
-        foreach ($arr as $value){
-            if($i%2==0){
-                $str = $str."<span class='green'>".$arr[$i]."</span> ";
-            }else{
-                $str = $str."<span class='red'>".$arr[$i]."</span> ";
-            }
-            $i++;
-        }
-        return $str;
-    }
-
-
 ?>
             <div class="foto_bar ">
                     <div class="foto">
@@ -153,6 +133,14 @@
 
             </div>
             <div class="line"></div>
+            <div class="last_link">
+                <a href="include/link_add.php?link=bitrix">Перейти на сайт 1С-Битрикс</a><br>
+                <a href="include/link_add.php?link=fact">Перейти на сайт Факт</a><br>
+                <?php
+                if($_SESSION['LAST_LINK']){
+                    echo 'Последняя посещенная страница - '.$_SESSION['LAST_LINK'].'<br>';
+                }?>
+            </div>
 <?php
 include('footer.php');
 ?>

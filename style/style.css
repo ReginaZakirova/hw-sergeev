@@ -1,4 +1,9 @@
-html,body{
+html{
+    margin:0;
+    padding: 0;
+    height: 100%;
+}
+body{
     margin:0;
     padding: 0;
     height: 100%;
@@ -11,7 +16,7 @@ html,body{
     min-height: 100%;
     border-radius: 15px;
     box-shadow: 0px 0px 5px  #000 ;
-
+    height: 100%;
 }
 .header{
     border-radius: 15px 15px 0px 0px ;
@@ -23,6 +28,7 @@ html,body{
 }
 .content{
     padding: 10px;
+    height: calc(100% - 150px);
 }
 h1,h3,h4{
     margin: 0px;
@@ -219,7 +225,10 @@ h3{
     padding: 25px;
     border-radius: 5px;
 }
-input[type='text'],input[type='password'],input[type='textarea'],input[type='submit']{
+.popup a{
+    color: #000;
+}
+input[type='text'],input[type='password'],input[type='textarea'],input[type='submit'], select{
     padding: 5px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -227,12 +236,34 @@ input[type='text'],input[type='password'],input[type='textarea'],input[type='sub
     width: 100%;
     box-sizing: border-box;
 }
+.select_color{
+    max-width: 205px;
+}
+.select_color select, .select_color input[type='submit']{
+    width: 100px;
+}
 input[type='submit']{
     cursor: pointer;
  }
 #login{
     margin-left: auto;
 }
+.footer{
+    max-width: 1240px;
+    margin: 5px auto;
+    height: 65px;
+    border-radius: 0px 0px 15px 15px;
+    background: #8c9bd6;
+    box-shadow: 0px 1px 1px #000 ;
+}
+.container_footer{
+    padding: 10px;
+    height: 100%;
+}
+.last_link a{
+    font-weight: bold;
+}
+
 /*Адаптивность*/
 @media (max-width: 768px){
     .right_bar{
@@ -253,5 +284,14 @@ input[type='submit']{
 @media (max-width: 500px){
     .grid{
         grid-template-columns: 1fr;
+    }
+    .header{
+        height: auto;
+    }
+    .menu{
+        display: block;
+    }
+    .punkt_menu{
+        width: 100%;
     }
 }
