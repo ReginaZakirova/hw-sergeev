@@ -1,5 +1,7 @@
 <?php
 session_start();
+//include 'database.php';// - создание базы данных, таблицы Users и добавление новых пользователей
+include "include/main.php"; // авторизация и прочие функции
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,7 +14,6 @@ session_start();
     <link rel="stylesheet" href="style/style.css">
     <script src="scripts/main.js"></script>
     <link rel="stylesheet" href="style/test.css">
-    <?php include "include/main.php"?>
     <title>Домашнее задание</title>
 </head>
 <body style="background-color: <?=select_color($_SESSION["ID_COLOR"])?> !important">

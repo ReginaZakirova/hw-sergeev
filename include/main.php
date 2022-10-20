@@ -1,14 +1,17 @@
 <?php
-
 function password($a=1){
     if($a=0){
         return 0;
     }
-    $users = array(
-        'admin'=>base64_encode('admin'),
-        'vasia'=>base64_encode('vasia'),
-        'dima'=>base64_encode('dima')
-    );
+    $mysqli = new mysqli("127.0.0.1", "root", "root", 'Segeev_DB');
+    $sql = "SELECT * FROM Users WHERE login = '".$_POST['name']."'";
+    $result = $mysqli->query($sql);
+    $row = mysqli_fetch_assoc($result);
+    if (count($row)>1) {
+        $users[$row['login']] = $row['password'];
+    } else {
+        return 0;
+    }
     if($_POST && ($_POST['password']=='' || $_POST['name']=='')){
         return 3;
     }
