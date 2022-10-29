@@ -261,7 +261,17 @@ input[type='submit']{
 .last_link a{
     font-weight: bold;
 }
-
+.error_box{
+    border-radius: 10px;
+    background-color: red;
+    color: #000;
+    font-weight: bold;
+    padding: 10px;
+    display: none;
+}
+#reg_form{
+    display: none;
+}
 /*Адаптивность*/
 @media (max-width: 768px){
     .right_bar{

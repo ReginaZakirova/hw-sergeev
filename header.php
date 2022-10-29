@@ -10,6 +10,7 @@ include "include/main.php"; // авторизация и прочие функц
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/style.css">
     <script src="scripts/main.js"></script>
@@ -51,35 +52,36 @@ include "include/main.php"; // авторизация и прочие функц
                 <span><a target="_blank" href="https://fact.digital/">ФАКТ</a></span>
             </div>
             <div class="punkt_menu" id="login">
-                <?php
-                    if($_SESSION["USER_LOGIN"]){
-                        echo '<span>'.$_SESSION["USER_LOGIN"].'</span>';
-                    }else{
-                        echo '<span>Войти</span>';
-                    }?>
-
+                <span>
+                <?php if(isset($_SESSION['LOGIN'])) echo $_SESSION['LOGIN']; else echo "Войти";?>
+                </span>
             </div>
-            <div class="popup" style="<?if(password()==1) echo 'display: block'; else echo 'display: none';?>">
+            <div class="popup">
                 <div class="popup_container">
-                    <?php if(!isset($_SESSION["USER_LOGIN"])){ ?>
-                    <form method="POST">
+                    <form method="POST" id="login_form">
                         <input type="hidden" name="FORM_LOGIN" value="load">
-                        <h3>Войти(admin/admin)</h3>
-                        <input type="text" name='name' placeholder="Name">
-                        <input type="password" name='password' placeholder="Password"><br>
-                        <input type="submit">
+                        <?php if(isset($_SESSION['LOGIN'])){?>
+                            <a href="include/login.php?logout=1">Выйти</a>
+                        <?php }else{?>
+                            <h3>Войти(admin/admin)</h3>
+                            <input type="text" name='name' id = 'login' placeholder="Name">
+                            <input type="password" name='password' id = 'password' placeholder="Password"><br>
+                            <input type="submit" value="Войти">
+                            <input type="submit" name = 'reg' id = 'reg' value="Регистрация">
+                        <?php }?>
+                        <div class="error_cnt">
+                            <div class="error_box"></div>
+                        </div>
                     </form>
-                    <?php  } ?>
-                    <?php if(password()==0){?>
-                        <div>Не верно введен логин</div>
-                    <?php } ?>
-                    <?php if(password()==3){?>
-                        <div>Заполните пустые поля</div>
-                    <?php } ?>
-                   <?php if($_SESSION["USER_LOGIN"]){?>
-                       <div>Привет, <?=$_SESSION["USER_LOGIN"]?></div>
-                       <div><a href="include/main.php?destroy=1">Выйти</a></div>
-                    <?php } ?>
+                    <form method="POST" id="reg_form">
+                            <h3>Регистрация</h3>
+                            <input type="text" name='name' id = 'loginReg' placeholder="Name">
+                            <input type="password" name='password' id = 'passwordReg' placeholder="Password"><br>
+                            <input type="submit" value="Регистрация">
+                        <div class="error_cnt">
+                            <div class="error_box"></div>
+                        </div>
+                    </form>
                 </div>
                 <div class="popup_vid"></div>
             </div>

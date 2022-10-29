@@ -1,33 +1,4 @@
 <?php
-function password($a=1){
-    if($a=0){
-        return 0;
-    }
-    $mysqli = new mysqli("127.0.0.1", "root", "root", 'Segeev_DB');
-    $sql = "SELECT * FROM Users WHERE login = '".$_POST['name']."'";
-    $result = $mysqli->query($sql);
-    $row = mysqli_fetch_assoc($result);
-    if (count($row)>1) {
-        $users[$row['login']] = $row['password'];
-    } else {
-        return 0;
-    }
-    if($_POST && ($_POST['password']=='' || $_POST['name']=='')){
-        return 3;
-    }
-    if($_POST['password']!='' && $_POST['FORM_LOGIN']=='load'){
-        $password=base64_encode($_POST['password']);
-        if($password==$users[$_POST['name']]){
-            $_SESSION['USER_LOGIN']=$_POST['name'];
-            return 1;
-        }else{
-            return 0;
-        }
-    }else{
-        return 2;
-    }
-}
-
 function daysAll(){
     $date1 = strtotime(date('d-m-Y'));
     $date2 = strtotime("29-06-1993");
@@ -59,11 +30,4 @@ function select_color($id){
 if($_GET['color']){
     $_SESSION['ID_COLOR'] = $_GET['color'];
 }
-if($_GET['destroy']==1){
-    session_start();
-    password(0);
-    session_destroy();
-    header('Location: ../index.php');
-}
-
 ?>
